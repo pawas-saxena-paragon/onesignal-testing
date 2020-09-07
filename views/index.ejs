@@ -8,9 +8,26 @@
                     appId: "b5f36801-2f25-4149-ad77-4d3c6a10b28b",
                 });
             });
+
+            function createExternalId(){
+                var externalIdVal = document.getElementById('externalIdInput').value;
+                if(!externalIdVal){
+                    throw new Error("invalid external Id value");
+                }
+                OneSignal.push(function(){
+                    OneSignal.setExternalUserId('externalIdVal');
+                });
+            }
+            window.addEventListener('DOMContentLoaded', (event) => {
+                document.getElementById('createBtn').addEventListener('click', createExternalId);
+            });
+            
           </script>
     </head>
     <body>
         Hello
+        <p>Insert the external Id that you want to create</p>
+        <input type="text" id="externalIdInput">
+        <button id="createBtn">Create</button>
     </body>
 </html>
