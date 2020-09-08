@@ -7,6 +7,14 @@
                 OneSignal.init({
                     appId: "b5f36801-2f25-4149-ad77-4d3c6a10b28b",
                 });
+
+                OneSignal.on("notificationDisplay", function (event) {
+                    console.log("OneSignal notification displayed:", event);
+                });
+
+                OneSignal.on("notificationDismiss", function (event) {
+                    console.log("OneSignal notification dismissed:", event);
+                });
             });
 
             function createExternalId(){
@@ -22,7 +30,7 @@
                 document.getElementById('createBtn').addEventListener('click', createExternalId);
             });
             
-          </script>
+        </script>
     </head>
     <body>
         Hello
